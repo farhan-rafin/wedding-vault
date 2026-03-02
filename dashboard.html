@@ -9,33 +9,26 @@
 <body>
     <div class="nav-bar">
         <button onclick="showSection('ask')">Ask Sweety</button>
-        <button onclick="showSection('answer')">Answer Her/Him</button>
-        <button onclick="showSection('history')">Our Story (History)</button>
+        <button onclick="showSection('answer')">Answer Now</button>
+        <button onclick="showSection('history')">Our Story</button>
     </div>
 
     <div id="ask-section" class="container section">
-        <h2>Ask a New Question</h2>
-        <p>Future plans, dreams, wishes, or expectations...</p>
-        <textarea id="new-question" placeholder="Write your question here..."></textarea>
-        <button onclick="submitQuestion()">Send to the Vault</button>
+        <h2>Ask a Question</h2>
+        <textarea id="new-question" placeholder="Future plans, dreams, imaginations..."></textarea>
+        <button onclick="submitQuestion()">Send to Vault</button>
     </div>
 
     <div id="answer-section" class="container section" style="display:none;">
-        <h2>A Question for You</h2>
-        <div id="question-display" class="question-box">Searching for a question...</div>
-        <textarea id="answer-text" placeholder="Your heart's response (no word limit)..."></textarea>
-        <button onclick="submitAnswer()">Save My Answer</button>
+        <div id="question-display" class="question-box">Searching...</div>
+        <textarea id="answer-text" placeholder="Your heart's response..."></textarea>
+        <button onclick="submitAnswer()">Save Answer</button>
     </div>
 
     <div id="history-section" class="container section" style="display:none;">
         <h2>Our Journey History</h2>
-        <div id="history-list">
-            </div>
+        <div id="history-list"></div>
     </div>
-
-    <audio id="bg-music" loop>
-        <source src="music.mp3" type="audio/mpeg">
-    </audio>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="script.js"></script>
