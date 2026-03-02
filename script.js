@@ -170,3 +170,47 @@ async function loadHistory() {
         historyList.innerHTML = "Our story hasn't started yet. Ask a question to begin! ❤️";
     }
 }
+// Function to load every Q&A for the "Our Story" tab
+async function loadHistory() {
+    const historyList = document.getElementById('history-list');
+    historyList.innerHTML = "<p>Walking down memory lane...</p>";
+
+    // Fetch all rows from the vault, ordered by the date they were created
+    const { data, error } = await _supabase
+        .from('vault')
+        .select('*')
+        .order('created_at', { ascending: true });
+
+    if (error) {
+        console.error("History Error:", error);
+        historyList.innerHTML = "<p>Could not load the vault right now.</p>";
+        return;
+    }
+
+    if (data && data.length > 0) {
+        historyList.innerHTML = ""; // Clear the loading message
+        
+        data.forEach(item => {
+            const card = document.createElement('div');
+            card.className = 'history-card';
+            
+            // This creates a side-by-side view of your answers
+            card.innerHTML = `
+                <div class="history-question">✨ ${item.question_text}</div>
+                <div class="history-grid">
+                    <div class="ans-col">
+                        <strong>Momi:</strong> 
+                        <p>${item.momi_answer || "<i>Still thinking...</i>"}</p>
+                    </div>
+                    <div class="ans-col">
+                        <strong>Farhan:</strong> 
+                        <p>${item.farhan_answer || "<i>Still thinking...</i>"}</p>
+                    </div>
+                </div>
+            `;
+            historyList.appendChild(card);
+        });
+    } else {
+        historyList.innerHTML = "<p>The vault is empty. Ask the first question! ❤️</p>";
+    }
+}
