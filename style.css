@@ -75,3 +75,41 @@ button:hover {
     background-image: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,0.5), rgba(255,255,255,0));
     margin-top: 20px;
 }
+/* Styling for the History Cards */
+.history-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: left;
+}
+
+.history-question {
+    font-size: 1.3rem;
+    color: #ffdae9;
+    margin-bottom: 15px;
+    font-family: 'Georgia', serif;
+}
+
+.history-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Side-by-side columns */
+    gap: 20px;
+}
+
+.ans-col {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* For mobile phones, make the columns stack on top of each other */
+@media (max-width: 600px) {
+    .history-grid {
+        grid-template-columns: 1fr;
+    }
+}
